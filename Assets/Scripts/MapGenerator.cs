@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -12,7 +13,7 @@ public class MapGenerator : MonoBehaviour
     {
         _pallets = Resources.LoadAll<Tile>("Palettes");
         _tilemap = GetComponent<Tilemap>();
-            
+
         GenerateMap();
     }
 
@@ -25,7 +26,9 @@ public class MapGenerator : MonoBehaviour
         for (var i = 0; i < positions.Length; i++)
         {
             positions[i] = new Vector3Int(i % size.x, i / size.y, 0);
-            _tilemap.SetTile(positions[i], _pallets[Random.Range(0, _pallets.Length)]);
+            var tileName = _pallets[Random.Range(0, _pallets.Length)];
+            tileName.color = Color.white;
+            _tilemap.SetTile(positions[i], tileName);
         }
     }
 }

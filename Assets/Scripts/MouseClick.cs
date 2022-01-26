@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+﻿using Pathing;
+using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class MouseClick : MonoBehaviour
 {
         private Tilemap _tilemap;
-        private Tile _startingTile;
-        private Tile _endingTile;
+        private AStarTile _startingTile;
+        private AStarTile _endingTile;
         private Vector3Int _startingTileVec;
         private Vector3Int _endingTileVec;
         
@@ -16,6 +17,12 @@ public class MouseClick : MonoBehaviour
 
         private void Update()
         {
+                if (Input.GetKey(KeyCode.Space))
+                {
+                        AStar.GetPath(_startingTile, _endingTile);
+                        return;
+                }
+                
                 if (Input.GetMouseButton(0))
                 {
                         if (_startingTile != null)
@@ -30,7 +37,7 @@ public class MouseClick : MonoBehaviour
                         return;
                 }
 
-                if (Input.GetMouseButton(1)) return;
+                if (!Input.GetMouseButton(1)) return;
                 
                 if (_endingTile != null)
                 {
@@ -61,14 +68,14 @@ public class MouseClick : MonoBehaviour
                 if (leftClick)
                 {
                         _startingTileVec = tPos;
-                        _startingTile = tile;
+                        _startingTile = (AStarTile) tile;
                         _startingTile.color = Color.green;
                         Debug.Log(_startingTileVec + " = " + _startingTile.name);
                         return;
                 }
                 
                 _endingTileVec = tPos;
-                _endingTile = tile;
+                _endingTile = (AStarTile) tile;
                 _endingTile.color = Color.blue;
                 Debug.Log(_endingTileVec + " = " + _endingTile.name);
         }

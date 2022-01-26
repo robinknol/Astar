@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: mountain
+  m_Script: {fileID: 11500000, guid: 13112afd253044ceb091389c5632fab0, type: 3}
+  m_Name: Mountain
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 21300000, guid: 0d878bd9be6f941c0a1490b66b6f260d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -32,5 +32,6 @@ MonoBehaviour:
     e32: 0
     e33: 1
   m_InstancedGameObject: {fileID: 0}
-  m_Flags: 0
+  m_Flags: 1
   m_ColliderType: 1
+  cost: 10
